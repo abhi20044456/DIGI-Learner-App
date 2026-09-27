@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172c4d">
+  <title>Digi Learner — Learn at your pace</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg', v='20260927-2') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css', v='20260927-2') }}">
+  <script src="{{ url_for('static', filename='app.js', v='20260927-2') }}" defer></script>
+</head>
+<body>
+  <div class="app-frame">
+    <header id="site-header"></header>
+    <main id="app-main" tabindex="-1">
+      <div class="loading-state"><span class="spinner"></span>Loading Digi Learner…</div>
+    </main>
+    <footer class="site-footer"><span>Digi Learner</span><span>Learn a little every day.</span></footer>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

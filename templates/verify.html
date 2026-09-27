@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172c4d">
+  <title>Certificate verification · Digi Learner</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:#1d2b3f;font:15px/1.6 'Segoe UI',Arial,sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px}.card{width:min(100%,680px);background:white;border:1px solid #e1e8f1;border-radius:22px;padding:clamp(26px,6vw,52px);box-shadow:0 24px 70px rgba(30,51,82,.12)}.brand{color:#315fc9;letter-spacing:1.3px;font-weight:800;font-size:13px}.badge{display:inline-block;margin:26px 0 10px;padding:7px 12px;border-radius:999px;background:#e6f6ef;color:#168656;font-weight:700;font-size:12px}.badge.invalid{background:#fff0f0;color:#be3943}h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 12px;color:#172c4d}p{color:#64748a}.details{margin-top:28px;border-top:1px solid #e6ebf2}.line{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid #e6ebf2}.line span{color:#748197}.line strong{text-align:right;color:#203752}.code{font:12px/1.5 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;color:#435c83}.foot{margin-top:25px;font-size:12px;color:#8995a4}.foot a{color:#3869e8;text-decoration:none}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">DIGI LEARNER · CERTIFICATE CHECK</div>
+    {% if certificate %}
+      <div class="badge">✓ Verified certificate</div>
+      <h1>This certificate is authentic.</h1>
+      <p>Digi Learner records confirm that this learner completed the course assessment.</p>
+      <div class="details">
+        <div class="line"><span>Learner</span><strong>{{ certificate.student_name }}</strong></div>
+        <div class="line"><span>Course</span><strong>{{ certificate.course_title }}</strong></div>
+        <div class="line"><span>Assessment score</span><strong>{{ '%.0f'|format(certificate.score) }}%</strong></div>
+        <div class="line"><span>Issued</span><strong>{{ certificate.issued_at.strftime('%B %d, %Y') }}</strong></div>
+        <div class="line"><span>Certificate ID</span><strong class="code">{{ certificate.certificate_code }}</strong></div>
+      </div>
+    {% else %}
+      <div class="badge invalid">Certificate not found</div>
+      <h1>We could not verify this certificate.</h1>
+      <p>The certificate ID is invalid or the record is no longer available. Check that the complete verification link was used.</p>
+    {% endif %}
+    <div class="foot">This page checks the certificate against the Digi Learner issue register. <a href="/">Visit Digi Learner</a></div>
+  </main>
+</body>
+</html>
